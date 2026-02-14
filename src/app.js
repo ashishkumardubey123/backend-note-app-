@@ -8,7 +8,7 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware to parse JSON request bodies
 
 // 1️⃣ Static files first
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static("./public"));
 
 // app.use((req, res) => {
 //   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
@@ -31,7 +31,7 @@ app.post("/api/notes", async (req, res) => {
 app.get("/api/notes", async (req, res) => {
   const notes = await noteModel.find();
 
-  console.log(notes);
+
   res.status(200).json({
     success: true,
     message: "Notes retrieved successfully",
